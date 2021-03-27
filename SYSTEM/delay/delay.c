@@ -91,7 +91,7 @@ void delay_ostimedly(u32 ticks)
 //systick中断服务函数,使用OS时用到
 void SysTick_Handler(void)
 {	
-    HAL_IncTick();
+  HAL_IncTick();
 	if(delay_osrunning==1)					//OS开始跑了,才执行正常的调度处理
 	{
 		OSIntEnter();						//进入中断
@@ -110,7 +110,7 @@ void delay_init(u8 SYSCLK)
 #if SYSTEM_SUPPORT_OS 						//如果需要支持OS.
 	u32 reload;
 #endif
-    HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);//SysTick频率为HCLK
+  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);//SysTick频率为HCLK
 	fac_us=SYSCLK;						    //不论是否使用OS,fac_us都需要使用
 #if SYSTEM_SUPPORT_OS 						//如果需要支持OS.
 	reload=SYSCLK;					        //每秒钟的计数次数 单位为K	   

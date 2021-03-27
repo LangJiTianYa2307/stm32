@@ -18,7 +18,7 @@ void Key_GPIO_Init(void)
 	
 	//key2 Init
 	GPIO_InitStructure.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStructure.Pin = GPIO_PIN_3;
+	GPIO_InitStructure.Pin = GPIO_PIN_13;
 	GPIO_InitStructure.Pull = GPIO_PULLUP;
 	GPIO_InitStructure.Speed = GPIO_SPEED_FREQ_HIGH;
 	

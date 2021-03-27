@@ -77,6 +77,8 @@
 ..\obj\main.o: ..\CORE\core_cm7.h
 ..\obj\main.o: ..\HALLIB\Inc\stm32f7xx_hal.h
 ..\obj\main.o: ..\SYSTEM\delay\delay.h
-..\obj\main.o: ..\SYSTEM\usart\usart.h
+..\obj\main.o: ..\HARDWARE\usart1.h
 ..\obj\main.o: ..\HARDWARE\led.h
 ..\obj\main.o: ..\HARDWARE\key.h
+..\obj\main.o: ..\HARDWARE\exti.h
+..\obj\main.o: ..\HARDWARE\iwdog.h

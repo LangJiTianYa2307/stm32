@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F67xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\HARDWARE;..\HALLIB\Inc;..\CORE</IncludePath>
+              <IncludePath>..\USER;..\SYSTEM\delay;..\SYSTEM\sys;..\HARDWARE;..\HALLIB\Inc;..\CORE</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -414,6 +414,26 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\key.c</FilePath>
             </File>
+            <File>
+              <FileName>usart1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\usart1.c</FilePath>
+            </File>
+            <File>
+              <FileName>exti.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\exti.c</FilePath>
+            </File>
+            <File>
+              <FileName>iwdog.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\iwdog.c</FilePath>
+            </File>
+            <File>
+              <FileName>wwdog.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\wwdog.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -428,11 +448,6 @@
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SYSTEM\sys\sys.c</FilePath>
-            </File>
-            <File>
-              <FileName>usart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SYSTEM\usart\usart.c</FilePath>
             </File>
           </Files>
         </Group>

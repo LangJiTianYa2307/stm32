@@ -61,17 +61,16 @@ UART_HandleTypeDef UART1_Handler; //UART句柄
 void uart_init(u32 bound)
 {	
 	//UART 初始化设置
-	UART1_Handler.Instance=USART1;					    //USART1
-	UART1_Handler.Init.BaudRate=bound;				    //波特率
+	UART1_Handler.Instance=USART1;					      			//USART1
+	UART1_Handler.Init.BaudRate=bound;				    			//波特率
 	UART1_Handler.Init.WordLength=UART_WORDLENGTH_8B;   //字长为8位数据格式
-	UART1_Handler.Init.StopBits=UART_STOPBITS_1;	    //一个停止位
-	UART1_Handler.Init.Parity=UART_PARITY_NONE;		    //无奇偶校验位
+	UART1_Handler.Init.StopBits=UART_STOPBITS_1;	      //一个停止位
+	UART1_Handler.Init.Parity=UART_PARITY_NONE;		      //无奇偶校验位
 	UART1_Handler.Init.HwFlowCtl=UART_HWCONTROL_NONE;   //无硬件流控
-	UART1_Handler.Init.Mode=UART_MODE_TX_RX;		    //收发模式
-	HAL_UART_Init(&UART1_Handler);					    //HAL_UART_Init()会使能UART1
+	UART1_Handler.Init.Mode=UART_MODE_TX_RX;		    		//收发模式
+	HAL_UART_Init(&UART1_Handler);					    				//HAL_UART_Init()会使能UART1
 	
-	HAL_UART_Receive_IT(&UART1_Handler, (u8 *)aRxBuffer, RXBUFFERSIZE);//该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量
-  
+	HAL_UART_Receive_IT(&UART1_Handler, (u8 *)aRxBuffer, RXBUFFERSIZE);//该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量 
 }
 
 //UART底层初始化，时钟使能，引脚配置，中断配置
@@ -128,7 +127,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 				}		 
 			}
 		}
-
 	}
 }
  
@@ -144,17 +142,17 @@ void USART1_IRQHandler(void)
 	HAL_UART_IRQHandler(&UART1_Handler);	//调用HAL库中断处理公用函数
 	
 	timeout=0;
-    while (HAL_UART_GetState(&UART1_Handler)!=HAL_UART_STATE_READY)//等待就绪
+  while (HAL_UART_GetState(&UART1_Handler)!=HAL_UART_STATE_READY)//等待就绪
 	{
-        timeout++;////超时处理
-        if(timeout>maxDelay) break;		
+			timeout++;////超时处理
+			if(timeout>maxDelay) break;		
 	}
      
 	timeout=0;
 	while(HAL_UART_Receive_IT(&UART1_Handler,(u8 *)aRxBuffer, RXBUFFERSIZE)!=HAL_OK)//一次处理完成之后，重新开启中断并设置RxXferCount为1
 	{
-        timeout++; //超时处理
-        if(timeout>maxDelay) break;	
+			timeout++; //超时处理
+			if(timeout>maxDelay) break;	
 	}
 #if SYSTEM_SUPPORT_OS	 	//使用OS
 	OSIntExit();  											 
