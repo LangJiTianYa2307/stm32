@@ -82,3 +82,5 @@
 ..\obj\main.o: ..\HARDWARE\key.h
 ..\obj\main.o: ..\HARDWARE\exti.h
 ..\obj\main.o: ..\HARDWARE\iwdog.h
+..\obj\main.o: ..\HARDWARE\wwdog.h
+..\obj\main.o: ..\HARDWARE\tim.h

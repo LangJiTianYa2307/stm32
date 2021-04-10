@@ -2,6 +2,8 @@
 
 WWDG_HandleTypeDef WWDG_Handler;
 
+//Twwdg=(4096*2^WDGTB*(T[5:0]+1))/Fpclk1;
+
 void 	WWDG_Init(uint32_t cr,uint32_t wr,uint32_t fprer)
 {
 	WWDG_Handler.Instance = WWDG;
@@ -35,4 +37,3 @@ void HAL_WWDG_EarlyWakeupCallback(WWDG_HandleTypeDef* hwwdg)
 	LED1_Toggle;
 }
 
- 

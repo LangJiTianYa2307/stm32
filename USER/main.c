@@ -5,6 +5,9 @@
 #include "key.h"
 #include "exti.h"
 #include "iwdog.h"
+#include "wwdog.h"
+#include "tim.h"
+
 void Delay(__IO uint32_t nCount);
 void Delay(__IO uint32_t nCount)
 {
@@ -19,8 +22,6 @@ int main(void)
 
 	Cache_Enable();                 //打开L1-Cache
 	
-	
-	
 	HAL_Init();				              //初始化HAL库
 	Stm32_Clock_Init(432,25,2,9);   //设置时钟,216Mhz 
 	delay_init(216);                //延时初始化
@@ -34,6 +35,7 @@ int main(void)
 	
   //LED常亮 
 	LED0(0);
+	
 	
 //	GPIO_Initure.Pin=GPIO_PIN_0|GPIO_PIN_1; //PB1,0
 //	GPIO_Initure.Mode=GPIO_MODE_OUTPUT_PP;  //推挽输出

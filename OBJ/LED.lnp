@@ -8,6 +8,8 @@
 "..\obj\usart1.o"
 "..\obj\exti.o"
 "..\obj\iwdog.o"
+"..\obj\wwdog.o"
+"..\obj\tim.o"
 "..\obj\delay.o"
 "..\obj\sys.o"
 "..\obj\stm32f7xx_hal.o"
