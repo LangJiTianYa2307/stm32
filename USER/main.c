@@ -7,7 +7,11 @@
 #include "iwdog.h"
 #include "wwdog.h"
 #include "tim.h"
+#include "pwm.h"
 
+#define PWM 1
+int direction = 0;
+uint32_t CompareValue=0;
 void Delay(__IO uint32_t nCount);
 void Delay(__IO uint32_t nCount)
 {
@@ -32,6 +36,16 @@ int main(void)
 	Exit_GPIO_Init();
 	delay_ms(100);
 	IWDG_Init(IWDG_PRESCALER_64,500);
+	#if TIM
+	//设置周期为0.5s，产生中断，LED1翻转一次
+	TIM3_Init(10800,5000);
+	#endif
+		
+	#if PWM
+	//设置频率为2kHZ的频率，
+	PWM_Init(500-1,108-1);
+	//用于控制比较寄存器值的加减方向
+	#endif
 	
   //LED常亮 
 	LED0(0);
@@ -118,6 +132,29 @@ int main(void)
 			IWDG_Feed();
 		}
 		delay_ms(10);
+		#endif
+		//设置TIM
+		#if TIM
+		LED0_Toggle;
+		delay_ms(10);
+		#endif
+		
+		//设置PWM
+		#if PWM
+		if(!direction)
+    {
+			CompareValue++;
+			if(CompareValue>=300)
+				direction = 1;
+		}
+		else
+		{
+			CompareValue--;
+			if(CompareValue<=0)
+				direction = 0;
+		}
+		
+		Set_TIM3_Compare4(CompareValue);
 		#endif
 	}
 }

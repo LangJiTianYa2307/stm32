@@ -10,6 +10,7 @@
 "..\obj\iwdog.o"
 "..\obj\wwdog.o"
 "..\obj\tim.o"
+"..\obj\pwm.o"
 "..\obj\delay.o"
 "..\obj\sys.o"
 "..\obj\stm32f7xx_hal.o"

@@ -3,7 +3,7 @@
 TIM_HandleTypeDef TIM_Handler;
 
 //定时器计算公式：Tout=((arr+1)*(psc+1))/Ft  us
-//Ft=定时器的工作频率 单位:Mhz
+//Ft=定时器的工作频率 单位:Mhz 
 //example: arr = 5000-1, psc=10800-1 Ft=108000000 那么定时器的周期为0.5s
 void TIM3_Init(uint32_t pre,uint32_t arr)
 {
