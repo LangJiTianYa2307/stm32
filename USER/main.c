@@ -8,8 +8,13 @@
 #include "wwdog.h"
 #include "tim.h"
 #include "pwm.h"
+#include "IC.h"
+#include "adc.h"
 
 #define PWM 1
+#define IC 1
+#define ADCV 1
+#define TEMPSENSER 1
 int direction = 0;
 uint32_t CompareValue=0;
 void Delay(__IO uint32_t nCount);
@@ -19,6 +24,10 @@ void Delay(__IO uint32_t nCount)
 	{
 	}
 }
+
+//用于捕获高电平持续时间
+extern u8 TIM5CH1_CAPTURE_STA;
+extern u32 TIM5CH1_CAPTURE_VAL;
 
 int main(void)
 {
@@ -45,6 +54,10 @@ int main(void)
 	//设置频率为2kHZ的频率，
 	PWM_Init(500-1,108-1);
 	//用于控制比较寄存器值的加减方向
+	#endif
+	
+	#if IC
+	TIM5_CH1_Capture_Init(0XFFFFFFFF,108-1);   //以1MHZ的频率计数
 	#endif
 	
   //LED常亮 
@@ -155,6 +168,40 @@ int main(void)
 		}
 		
 		Set_TIM3_Compare4(CompareValue);
+		#endif
+		
+		#if IC
+		if(TIM5CH1_CAPTURE_STA&0X80)
+    {
+			long long temp;
+			temp = TIM5CH1_CAPTURE_STA & 0x3f;
+			temp *= 0xFFFFFFFF;
+      temp += TIM5CH1_CAPTURE_VAL;       
+			printf("HIGH:%lld us \r\n",temp);  
+			TIM5CH1_CAPTURE_STA = 0;            //开启下一次捕获
+		}
+		#endif
+		
+		#if ADCV
+		{
+			u16 adcx;
+			float  temp;
+			adcx =Get_Adc_Average(ADC_CHANNEL_5,20);
+			temp= (float)adcx*(3.3/4096);
+			printf("The adc convert value is %f\r\n",temp);
+		}
+		#endif
+		
+		#if TEMPSENSER 
+		{
+			u16 adcx;
+			double  temp;
+			adcx =Get_Adc_Average(ADC_CHANNEL_5,20);
+			temp= (float)adcx*(3.3/4096);
+			//计算内部温度公式
+			temp = (temp - 0.76) / 0.0025 + 25 ;
+			printf("The tempsenser value is %f\r\n",temp);
+		}
 		#endif
 	}
 }

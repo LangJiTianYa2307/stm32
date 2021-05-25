@@ -85,3 +85,5 @@
 ..\obj\main.o: ..\HARDWARE\wwdog.h
 ..\obj\main.o: ..\HARDWARE\tim.h
 ..\obj\main.o: ..\HARDWARE\pwm.h
+..\obj\main.o: ..\HARDWARE\IC.h
+..\obj\main.o: ..\HARDWARE\adc.h

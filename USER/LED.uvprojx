@@ -444,6 +444,16 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\pwm.c</FilePath>
             </File>
+            <File>
+              <FileName>IC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\IC.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\adc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

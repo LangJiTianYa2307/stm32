@@ -34,10 +34,10 @@ void TIM3_IRQHandler(void)
 	HAL_TIM_IRQHandler(&TIM_Handler);
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-	if(htim->Instance == TIM3)
-	{
-		LED1_Toggle;
-	}
-}
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+//{
+//	if(htim->Instance == TIM3)
+//	{
+//		LED1_Toggle;
+//	}
+//}

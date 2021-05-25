@@ -120,7 +120,7 @@ void USART1_IRQHandler(void)
 					//没接收到0x0d将数据缓存到数组当中
 					USART_REC_BUFFER[USART_STA & 0x3fff] = Res;
 					USART_STA++;
-					if(USART_STA > MAX_USART_DATA_LENGTH) USART_STA=0;
+					if(USART_STA > (MAX_USART_DATA_LENGTH - 1)) USART_STA=0;
 				}
 			}
 		}
